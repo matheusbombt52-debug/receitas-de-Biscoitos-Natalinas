@@ -6,7 +6,7 @@
 
   // IMPORTANTE: este nome precisa ser IGUAL ao nome do projeto criado no painel da Cloudflare.
   // Ele também define o endereço padrão: https://<name>.<sua-conta>.workers.dev
-"name": "receitas-de-biscoitos-natalinas",
+  "name": "receitas-de-biscoitos-natalinas",
 
   "main": ".output/server/index.mjs",
   "compatibility_date": "2025-09-01",

@@ -28,7 +28,7 @@ Requer Node 22 (arquivo `.node-version`).
 
 1. Suba este projeto para um repositório no GitHub.
 2. Cloudflare → **Workers & Pages** → **Create** → **Import a repository** → escolha o repositório.
-3. Em **Project name**, use exatamente `receitas-natalinas` (o mesmo `name` do `wrangler.jsonc`).
+3. Em **Project name**, use exatamente `receitas-de-biscoitos-natalinas` (o mesmo `name` do `wrangler.jsonc`).
    Se quiser outro nome, altere o `name` no `wrangler.jsonc` antes.
 4. Configurações de build:
    - **Build command:** `npm run build`
