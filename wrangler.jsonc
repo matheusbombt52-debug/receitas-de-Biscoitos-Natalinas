@@ -1,0 +1,21 @@
+{
+  // Configuração do Cloudflare Workers (Workers Builds / `wrangler deploy`).
+  // O `vite build` gera o Worker em .output/server e os arquivos estáticos em .output/public
+  // (o projeto usa TanStack Start + Nitro com alvo Cloudflare).
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // IMPORTANTE: este nome precisa ser IGUAL ao nome do projeto criado no painel da Cloudflare.
+  // Ele também define o endereço padrão: https://<name>.<sua-conta>.workers.dev
+  "name": "receitas-natalinas",
+
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": {
+    "directory": ".output/public",
+    "binding": "ASSETS"
+  },
+
+  "observability": { "enabled": true }
+}

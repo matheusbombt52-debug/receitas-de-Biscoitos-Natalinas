@@ -1,0 +1,20 @@
+Coloque aqui as imagens reais da página, com EXATAMENTE estes nomes
+(os nomes são lidos em src/config/images.ts):
+
+  bonus_1_manual_biscoitos_perfeitos.png
+  bonus_2_embalagens_magicas_natal.png
+  bonus_3_especial_natal_lucrativo.png
+  bonus_4_planejador_producao_natalina.png
+  bonus_5_guia_decoracao_criativa.webp
+  mesa_doces_natalinos.png
+  mesa_biscoitos_natal.png
+  caixas_presente_biscoitos.png
+  kits_biscoitos_venda.png
+  depoimento_mariana.png
+  depoimento_ricardo.png
+  depoimento_patricia.png
+  depoimento_sonia.png
+  selo_garantia_7_dias.png
+
+Enquanto um arquivo não estiver aqui, a página mostra o espaço reservado numerado
+no lugar daquela imagem (não aparece imagem quebrada).

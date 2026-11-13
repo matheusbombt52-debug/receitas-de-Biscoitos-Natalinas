@@ -1,0 +1,350 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * - Keep every @import in this top block, above @theme and the rest of the file. Install an
+ *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
+ *   build resolves @import from the filesystem. Load those with a <link> in the head() of
+ *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — 147 Receitas Natalinas
+ * Paleta: verde-escuro #243B27, vermelho natalino #A52225, creme #F8F5EB,
+ * dourado #C69A4B, branco #FFFFFF.
+ */
+
+@theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-promo: var(--promo);
+  --color-festive: var(--festive);
+  --color-festive-foreground: var(--festive-foreground);
+  --color-festive-deep: var(--festive-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-slot: var(--slot);
+  --color-slot-border: var(--slot-border);
+  --color-slot-foreground: var(--slot-foreground);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft: var(--shadow-soft-value);
+  --shadow-card: var(--shadow-card-value);
+  --shadow-cta: var(--shadow-cta-value);
+  --shadow-premium: var(--shadow-premium-value);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Marca */
+  --promo: oklch(0.17 0.022 150);
+  --cream: oklch(0.97 0.014 93);
+  --cream-deep: oklch(0.935 0.022 88);
+  --gold: oklch(0.712 0.11 80);
+  --gold-soft: oklch(0.88 0.06 85);
+  --gold-foreground: oklch(0.25 0.04 148);
+  --festive: oklch(0.473 0.167 25.4);
+  --festive-deep: oklch(0.4 0.15 25);
+  --festive-foreground: oklch(1 0 0);
+  --on-dark: oklch(0.97 0.014 93);
+  --on-dark-muted: oklch(0.86 0.025 110);
+
+  /* Espaços reservados de imagem */
+  --slot: oklch(1 0 0);
+  --slot-border: oklch(0.88 0.004 90);
+  --slot-foreground: oklch(0.52 0.01 120);
+
+  --background: var(--cream);
+  --foreground: oklch(0.24 0.035 148);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.035 148);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.035 148);
+  --primary: oklch(0.327 0.046 147.7);
+  --primary-deep: oklch(0.26 0.04 148);
+  --primary-foreground: oklch(0.97 0.014 93);
+  --secondary: var(--cream-deep);
+  --secondary-foreground: oklch(0.327 0.046 147.7);
+  --muted: var(--cream-deep);
+  --muted-foreground: oklch(0.45 0.03 140);
+  --accent: oklch(0.93 0.035 85);
+  --accent-foreground: oklch(0.327 0.046 147.7);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.89 0.02 90);
+  --input: oklch(0.89 0.02 90);
+  --ring: oklch(0.712 0.11 80);
+
+  --shadow-soft-value: 0 1px 2px oklch(0.3 0.04 148 / 0.05), 0 8px 24px -12px oklch(0.3 0.04 148 / 0.18);
+  --shadow-card-value: 0 2px 4px oklch(0.3 0.04 148 / 0.04), 0 18px 40px -20px oklch(0.3 0.04 148 / 0.28);
+  --shadow-cta-value: 0 10px 28px -10px oklch(0.473 0.167 25.4 / 0.6), inset 0 1px 0 oklch(1 0 0 / 0.18);
+  --shadow-premium-value: 0 0 0 1px oklch(0.712 0.11 80 / 0.55), 0 30px 60px -28px oklch(0.327 0.046 147.7 / 0.55);
+
+  --gradient-hero:
+    radial-gradient(60% 50% at 15% 0%, oklch(0.712 0.11 80 / 0.22) 0%, transparent 70%),
+    radial-gradient(90% 70% at 90% 15%, oklch(0.4 0.06 148) 0%, transparent 70%),
+    linear-gradient(180deg, oklch(0.3 0.045 148) 0%, oklch(0.25 0.04 148) 100%);
+  --gradient-hearth:
+    radial-gradient(70% 60% at 50% 110%, oklch(0.62 0.15 55 / 0.45) 0%, transparent 70%),
+    radial-gradient(50% 40% at 50% 100%, oklch(0.473 0.167 25.4 / 0.35) 0%, transparent 80%),
+    linear-gradient(180deg, oklch(0.26 0.04 148) 0%, oklch(0.3 0.045 148) 100%);
+  --gradient-cozy:
+    radial-gradient(60% 50% at 50% 45%, oklch(0.95 0.04 82 / 0.85) 0%, transparent 70%),
+    linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  --gradient-gold-line: linear-gradient(90deg, transparent, var(--gold), transparent);
+  --gradient-festive: linear-gradient(180deg, oklch(0.5 0.17 25.4), oklch(0.44 0.16 25));
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* a faixa Black Friday fixa não cobre os destinos das âncoras */
+    scroll-padding-top: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      scroll-padding-top: 3rem;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Fundo verde da primeira dobra e seções escuras */
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-hearth {
+  background-image: var(--gradient-hearth);
+}
+
+@utility bg-cozy {
+  background-image: var(--gradient-cozy);
+}
+
+@utility bg-festive-gradient {
+  background-image: var(--gradient-festive);
+}
+
+/* Fio dourado decorativo */
+@utility gold-line {
+  height: 1px;
+  background-image: var(--gradient-gold-line);
+}
+
+/* Padrão discreto de estrelas para seções escuras */
+@utility pattern-stars {
+  background-image:
+    radial-gradient(circle at 20% 30%, oklch(0.712 0.11 80 / 0.18) 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 70%, oklch(0.97 0.014 93 / 0.1) 1px, transparent 1.5px);
+  background-size: 48px 48px, 72px 72px;
+}
+
+/* Padrão sutil para o creme */
+@utility pattern-cream {
+  background-image: radial-gradient(circle at 1px 1px, oklch(0.712 0.11 80 / 0.16) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@utility animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+/* Toalha xadrez (gingham) — mesa de família */
+@utility pattern-gingham {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(90deg, oklch(0.473 0.167 25.4 / 0.075) 50%, transparent 50%),
+    linear-gradient(oklch(0.473 0.167 25.4 / 0.075) 50%, transparent 50%);
+  background-size: 36px 36px;
+}
+
+/* Xadrez escocês discreto para seções verdes */
+@utility pattern-plaid {
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 46px, oklch(0.473 0.167 25.4 / 0.22) 46px 52px, transparent 52px 58px, oklch(0.712 0.11 80 / 0.14) 58px 60px, transparent 60px 104px),
+    repeating-linear-gradient(0deg, transparent 0 46px, oklch(0.473 0.167 25.4 / 0.22) 46px 52px, transparent 52px 58px, oklch(0.712 0.11 80 / 0.14) 58px 60px, transparent 60px 104px);
+}
+
+/* Fita listrada de bengala doce */
+@utility candy-stripe {
+  background-image: repeating-linear-gradient(-45deg, var(--festive) 0 10px, var(--card) 10px 20px);
+}
+
+/* Costura pontilhada, como tecido feito à mão */
+@utility stitched {
+  outline: 2px dashed oklch(0.712 0.11 80 / 0.55);
+  outline-offset: -9px;
+}
+
+@utility stitched-festive {
+  outline: 2px dashed oklch(0.473 0.167 25.4 / 0.35);
+  outline-offset: -9px;
+}
+
+@utility glow-gold {
+  box-shadow: 0 0 10px 2px oklch(0.712 0.11 80 / 0.75);
+}
+
+@utility glow-festive {
+  box-shadow: 0 0 10px 2px oklch(0.55 0.19 25 / 0.75);
+}
+
+@utility glow-snow {
+  box-shadow: 0 0 10px 2px oklch(0.97 0.014 93 / 0.7);
+}
+
+@utility glow-pine {
+  box-shadow: 0 0 10px 2px oklch(0.6 0.12 150 / 0.7);
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    transform: translate3d(var(--drift, 20px), 1200px, 0);
+  }
+}
+
+@utility animate-snow {
+  animation: snow-fall linear infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@utility animate-twinkle {
+  animation: twinkle 2.4s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@utility animate-sway {
+  animation: sway 5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-snow,
+  .animate-twinkle,
+  .animate-sway,
+  .animate-float-soft {
+    animation: none !important;
+  }
+  .animate-snow {
+    display: none;
+  }
+}

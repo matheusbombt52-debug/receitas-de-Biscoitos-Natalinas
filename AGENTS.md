@@ -1,0 +1,7 @@
+## Project rules
+- Checkout links, prices and footer placeholders live only in `src/config/offer.ts`; buttons call `goToCheckout(kind)` so destinations stay editable in one place.
+- Image placeholders use `ImageSlot` (numbered, fixed aspect ratio); real images are passed via its `src` prop, using the paths in `src/config/images.ts` (files live in `public/images/`), so they keep the same size and framing. If a file is missing, `ImageSlot` falls back to the numbered placeholder.
+- Hosting is Cloudflare Workers (see `wrangler.jsonc` and README). `vite build` outputs `.output/`; do not add compression or `ssr.external` (see comments in `vite.config.ts`).
+- Meta Pixel loads only through `src/lib/meta-pixel.ts` (`grantMetaPixel(region)`, events only via `trackMetaEvent`), gated by `advertisingAllowed()`/`isTrackingRegion()` in `src/lib/consent.ts` (country allow-list, GPC, Cookie settings in footer); never add the raw snippet or call `fbq` elsewhere, so the country restriction covers every event.
+- Seasonal decorations (snow, string lights, ornaments, holly, bows, snow edges) live in `src/components/sales/Decor.tsx` and use theme tokens only, so sections reuse one consistent set.
+- UTMify (UTM capture) loads as a plain script tag in `RootShell` <head> of `src/routes/__root.tsx`, never as the obfuscated snippet; since buy buttons navigate via JS, `goToCheckout` appends the page query params with `withPageParams` so UTMs reach checkout.
